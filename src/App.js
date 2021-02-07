@@ -61,10 +61,11 @@ class App extends React.Component {
   }*/
 
   listCategories = (products) => {
-    /*this.setState({ categories: (products) => groupBy(products, "category") });*/
     this.setState({
       categories: (products) => Object.keys(groupBy(products, "category")),
     });
+    /* add also the option to not select any category */
+    this.setState({ categories: ["Select...", ...this.state.categories] });
   };
 
   render() {

@@ -10,12 +10,6 @@ import "./Products.css";
 //import ReactEmbedGist from 'react-embed-gist';
 //import Gist from "react-gist";
 
-/*const groupBy = (xs, key) =>
-  xs.reduce((rv, x) => {
-    rv[x[key]] = true || [];
-    return rv;
-  }, {});
-*/
 /*this component is called by the SaleCountdown component */
 
 class Products extends React.Component {
@@ -29,19 +23,6 @@ class Products extends React.Component {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((products) => this.setState({ products }));
-    console.log("products: ", this.state.products);
-    console.log("num prods: ", this.state.products.length);
-    /*if (this.state.products.length) {
-      this.setState({
-        categories: (products) =>
-          Object.keys(this.groupBy(products, "category")),
-      });
-      console.log("In Products, products: ", this.state.products);
-      console.log("number of prods in Products: ", this.state.products.length);
-      console.log("categories: ", this.state.categories);
-    } else {
-      console.log("products array empty");
-    }*/
   }
 
   /* could include the gist like this:
@@ -57,34 +38,24 @@ class Products extends React.Component {
  </div>
  */
 
-  /*
-  <button onClick={()=>{this.props.onAdd(this.input); this.input='';}>Select Category</button>
-  */
-
   /* maps the array containing the shop information to set up individual products items
   and passes via to the ProductsDisplayClass which will starts the sale countdown and which calls the  */
 
-  /* note re. the select and onchange: 
-Warning: You provided a `value` prop to a form field without an `onChange` handler. 
-This will render a read-only field. If the field should be mutable use `defaultValue`.
- Otherwise, set either `onChange` or `readOnly`.
- */
-  /* handleChange(e) {
-    this.setState({ selectedCategory: e.target.value });
-  }*/
+  clearSelection = () => {
+    this.setState({ selectedCategory: "" });
+  };
 
   handleChange = (event) => {
-    this.setState({ selectedCategory: event.target.value });
-    console.log("selected: ", this.state.selectedCategory);
+    this.setState({
+      selectedCategory: event.target.value,
+    });
   };
 
   render() {
     return (
-      <div className="product-filter">
+      <div>
         <div>
-          <div></div>
-          <div>What do you want to buy? </div>
-          <div>{this.state.categories}</div>
+          <span>What do you want to buy? </span>
           {this.state.products.length && (
             <select
               id="selectCat"
@@ -94,23 +65,25 @@ This will render a read-only field. If the field should be mutable use `defaultV
               <ListCategories products={this.state.products}></ListCategories>
             </select>
           )}
+          <button onClick={this.clearSelection}>Clear Choice</button>
         </div>
-        <div>selected: {this.state.selectedCategory}</div>
-        {this.state.products.map((product) => (
-          <ProductDisplayClass
-            color={this.props.color}
-            secondsLeft={this.props.secondsLeft}
-            title={product.title}
-            image={product.image}
-            price={product.price}
-            newPrice={this.state.newPrice}
-            id={product.id}
-            key={product.id}
-            salesProductsIds={this.props.salesProductsIds}
-            category={product.category}
-            selectedCategory={this.state.selectedCategory}
-          ></ProductDisplayClass>
-        ))}
+        <div className="product-filter">
+          {this.state.products.map((product) => (
+            <ProductDisplayClass
+              color={this.props.color}
+              secondsLeft={this.props.secondsLeft}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              newPrice={this.state.newPrice}
+              id={product.id}
+              key={product.id}
+              salesProductsIds={this.props.salesProductsIds}
+              category={product.category}
+              selectedCategory={this.state.selectedCategory}
+            ></ProductDisplayClass>
+          ))}
+        </div>
       </div>
     );
   }

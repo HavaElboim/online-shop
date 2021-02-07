@@ -1,5 +1,6 @@
 import React from "react";
 import Products from "../Products/Products";
+import "./SaleCountdown.css";
 
 /* this component is called by the ProductDisplayClass component *
 
@@ -45,7 +46,7 @@ class SaleCountdown extends React.Component {
   render() {
     return (
       <div>
-        <h3>{this.state.saleMessage} </h3>
+        <h2 id="message">{this.state.saleMessage} </h2>
         <div>
           <Products
             color={this.state.color}

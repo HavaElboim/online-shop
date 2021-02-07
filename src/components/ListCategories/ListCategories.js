@@ -1,9 +1,11 @@
 import React from "react";
+import "./ListCategories.css";
+
 //import CategoryDisplayClass from "../CategoryDisplayClass/CategoryDisplayClass";
 
 class ListCategories extends React.Component {
   state = {
-    categories: [],
+    categories: ["Select..."],
     products: [],
     selectedCategory: this.props.selectedCategory,
   };
@@ -39,7 +41,10 @@ class ListCategories extends React.Component {
       console.log("somevar: ", this.somevar);
       console.log("anothervar:", this.anothervar);
       this.setState({
-        categories: [...this.anothervar],
+        categories: [
+          "Select...",
+          ...this.anothervar,
+        ] /*include option of no category selection also*/,
       });
       console.log("categories: ", this.state.categories);
     } else {

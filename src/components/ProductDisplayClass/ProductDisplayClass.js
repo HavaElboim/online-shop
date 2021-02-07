@@ -27,21 +27,12 @@ class ProductDisplayClass extends React.Component {
 
   componentDidMount() {
     this.showSalePrice();
-    console.log("selected: ", this.state.selectedCategory);
-    console.log("selected props: ", this.props.selectedCategory);
   }
 
   /* renders an individual product card, containing product information and image.
   the information an image are obtained from the props which are passed from the ProductsContainerClass */
 
   render() {
-    console.log(
-      "current selectiong: ",
-      this.state.selectedCategory,
-      this.props.selectedCategory,
-      " cat of prod: ",
-      this.props.category
-    );
     return (
       (!this.props.selectedCategory ||
         this.props.category === this.props.selectedCategory) && (
