@@ -16,6 +16,7 @@ class ProductsContainerClass extends React.Component {
               price={this.props.price}
               newPrice={this.props.newPrice}
               salesProductsIds={this.props.salesProductsIds}
+              products={this.props.products}
             ></SaleCountdown>
           </div>
         </div>

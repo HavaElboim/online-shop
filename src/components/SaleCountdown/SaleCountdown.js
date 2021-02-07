@@ -1,6 +1,11 @@
 import React from "react";
 import Products from "../Products/Products";
 
+/* this component is called by the ProductDisplayClass component *
+
+/* counts down by seconds the time left until the end of the sale,
+and sets state of display message depending on whether the sale has finished */
+
 class SaleCountdown extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +38,9 @@ class SaleCountdown extends React.Component {
     }, 1000);
   }
 
+  /* passes the color of the sale items information using the state calculated above,
+  to the function which will set up the products objects */
+
   render() {
     return (
       <div>
@@ -44,6 +52,7 @@ class SaleCountdown extends React.Component {
             price={this.state.price}
             newPrice={this.state.newPrice}
             salesProductsIds={this.props.salesProductsIds}
+            products={this.props.products}
           ></Products>
         </div>
       </div>

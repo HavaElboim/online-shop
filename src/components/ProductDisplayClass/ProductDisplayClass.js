@@ -1,11 +1,14 @@
 import React from "react";
 import "./ProductDisplayClass.css";
 
+/* this component is called from the */
+
 class ProductDisplayClass extends React.Component {
   state = {
     price: this.props.price,
     newPrice: this.props.price,
     color: this.props.color,
+    category: this.props.category,
   };
 
   showSalePrice() {
@@ -24,6 +27,9 @@ class ProductDisplayClass extends React.Component {
   componentDidMount() {
     this.showSalePrice();
   }
+
+  /* renders an individual product card, containing product information and image.
+  the information an image are obtained from the props which are passed from the ProductsContainerClass */
 
   render() {
     return (
