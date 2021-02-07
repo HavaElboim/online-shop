@@ -1,7 +1,10 @@
 import React from "react";
 import "./ProductDisplayClass.css";
 
-/* this component is called from the */
+/* this component is called from the Products class.
+   It renders individual products cards (product title, image, price).
+   If the product is a sale item, its title and sale price are colored until the sale ends 
+   */
 
 class ProductDisplayClass extends React.Component {
   state = {

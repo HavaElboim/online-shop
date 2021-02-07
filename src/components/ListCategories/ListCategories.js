@@ -1,8 +1,6 @@
 import React from "react";
 import "./ListCategories.css";
 
-//import CategoryDisplayClass from "../CategoryDisplayClass/CategoryDisplayClass";
-
 class ListCategories extends React.Component {
   state = {
     categories: ["Select..."],
@@ -43,7 +41,7 @@ class ListCategories extends React.Component {
         categories: [
           "Select...",
           ...this.anothervar,
-        ] /*include option of no category selection also*/,
+        ] /*this doesn't work...: include option of no category selection also*/,
       });
       console.log("categories: ", this.state.categories);
     } else {
@@ -66,16 +64,3 @@ class ListCategories extends React.Component {
 }
 
 export default ListCategories;
-/*     
-  render() {
-    return (
-      <div>
-        {this.groupBy(this.state.products, "category").map((key) => (
-          <option>{key}</option>
-        ))}
-      </div>
-    );
-  }
-
-{this.state.categories.map((category) => (
-          <option value="category"> category </option>*/
