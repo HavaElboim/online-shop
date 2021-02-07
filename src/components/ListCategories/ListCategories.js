@@ -4,9 +4,8 @@ import React from "react";
 class ListCategories extends React.Component {
   state = {
     categories: [],
-    products: this.props.products,
+    products: [],
     selectedCategory: this.props.selectedCategory,
-    timeround: 0,
   };
 
   groupBy = (xs, key) =>
@@ -16,8 +15,7 @@ class ListCategories extends React.Component {
     }, {});
 
   componentDidMount() {
-    this.setState({ timeround: this.state.timeround + 1 });
-    console.log("timeround: ", this.state.timeround);
+    this.setState({ products: this.props.products });
     console.log(
       "In ListC, number of products from props: ",
       this.props.products.length
@@ -33,9 +31,8 @@ class ListCategories extends React.Component {
         categories: (products) =>
           Object.keys(this.groupBy(products, "category")),
       });
-      console.log("products: ", this.state.products);
-      console.log("categories: ", this.state.categories);
-      this.somevar = this.groupBy(this.state.products, "category");
+      /*console.log("products: ", this.state.products);
+      console.log("categories: ", this.state.categories);*/
       this.anothervar = Object.keys(
         this.groupBy(this.state.products, "category")
       );
@@ -53,8 +50,10 @@ class ListCategories extends React.Component {
     return (
       <>
         {Object.keys(this.groupBy(this.state.products, "category")).map(
-          (key) => (
-            <option>{key}</option>
+          (category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
           )
         )}
       </>

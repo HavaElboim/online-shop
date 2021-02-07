@@ -22,7 +22,7 @@ class Products extends React.Component {
   state = {
     products: this.props.products,
     categories: this.props.categories,
-    selectedCategory: "",
+    selectedCategory: this.props.selectedCategory,
   };
 
   componentDidMount() {
@@ -63,18 +63,39 @@ class Products extends React.Component {
 
   /* maps the array containing the shop information to set up individual products items
   and passes via to the ProductsDisplayClass which will starts the sale countdown and which calls the  */
+
+  /* note re. the select and onchange: 
+Warning: You provided a `value` prop to a form field without an `onChange` handler. 
+This will render a read-only field. If the field should be mutable use `defaultValue`.
+ Otherwise, set either `onChange` or `readOnly`.
+ */
+  /* handleChange(e) {
+    this.setState({ selectedCategory: e.target.value });
+  }*/
+
+  handleChange = (event) => {
+    this.setState({ selectedCategory: event.target.value });
+    console.log("selected: ", this.state.selectedCategory);
+  };
+
   render() {
     return (
       <div className="product-filter">
         <div>
           <div></div>
-          <div>categories are: </div>
+          <div>What do you want to buy? </div>
           <div>{this.state.categories}</div>
-          <select>
-            <ListCategories products={this.state.products}></ListCategories>
-          </select>
-          <div>chosen input: {this.state.selectedCategory}</div>
+          {this.state.products.length && (
+            <select
+              id="selectCat"
+              value={this.state.selectedCategory}
+              onChange={this.handleChange}
+            >
+              <ListCategories products={this.state.products}></ListCategories>
+            </select>
+          )}
         </div>
+        <div>selected: {this.state.selectedCategory}</div>
         {this.state.products.map((product) => (
           <ProductDisplayClass
             color={this.props.color}
@@ -87,6 +108,7 @@ class Products extends React.Component {
             key={product.id}
             salesProductsIds={this.props.salesProductsIds}
             category={product.category}
+            selectedCategory={this.state.selectedCategory}
           ></ProductDisplayClass>
         ))}
       </div>

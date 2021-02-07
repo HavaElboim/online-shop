@@ -15,6 +15,7 @@ class SaleCountdown extends React.Component {
       color: this.props.color,
       price: this.props.price,
       newPrice: this.props.newPrice,
+      selectedCategory: this.props.selectedCategory,
     };
   }
 
@@ -53,6 +54,7 @@ class SaleCountdown extends React.Component {
             newPrice={this.state.newPrice}
             salesProductsIds={this.props.salesProductsIds}
             products={this.props.products}
+            selectedCategory={this.state.selectedCategory}
           ></Products>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import ListCategories from "../ListCategories/ListCategories";
+//import ListCategories from "../ListCategories/ListCategories";
 
 class HeaderClass extends React.Component {
   state = {
@@ -14,15 +14,24 @@ class HeaderClass extends React.Component {
       <div>
         <h1> App</h1>
         <h2>Header</h2>
+      </div>
+    );
+  }
+}
+
+export default HeaderClass;
+
+/*
+ render() {
+    return (
+      <div>
+        <h1> App</h1>
+        <h2>Header</h2>
         <div>categories are: </div>
         <div>{this.categories}</div>
         <div>chosen input: {this.state.selectedCategory}</div>
         <select id="dropdown">
-          <ListCategories
-            selectCategory={this.state.selectCategory}
-            products={this.state.products}
-            categories={this.state.categories}
-          />
+          <ListCategories products={this.state.products}></ListCategories>
         </select>
         <input
           type="text"
@@ -43,6 +52,4 @@ class HeaderClass extends React.Component {
       </div>
     );
   }
-}
-
-export default HeaderClass;
+  */
