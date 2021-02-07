@@ -33,8 +33,7 @@ class ListCategories extends React.Component {
         categories: (products) =>
           Object.keys(this.groupBy(products, "category")),
       });
-      /*console.log("products: ", this.state.products);
-      console.log("categories: ", this.state.categories);*/
+
       this.anothervar = Object.keys(
         this.groupBy(this.state.products, "category")
       );

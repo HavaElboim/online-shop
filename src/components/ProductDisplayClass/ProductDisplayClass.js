@@ -38,7 +38,13 @@ class ProductDisplayClass extends React.Component {
         this.props.category === this.props.selectedCategory) && (
         <div className="product-card">
           <div className="product-info">
-            <h6 style={{ color: this.props.color }}>{this.props.title}</h6>
+            <h6
+              style={{
+                color: this.state.newPrice ? this.props.color : "black",
+              }}
+            >
+              {this.props.title}
+            </h6>
           </div>
           <div className="product-image">
             <img src={this.props.image} alt={""} />
