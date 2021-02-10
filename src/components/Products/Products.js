@@ -2,6 +2,8 @@ import React from "react";
 import ProductDisplayClass from "../ProductDisplayClass/ProductDisplayClass";
 import ListCategories from "../ListCategories/ListCategories";
 import "./Products.css";
+import PropTypes from "prop-types";
+
 //attempts to import gist file:
 //import "../../utils";
 // to call function groupBy from the file ../../utils.js,
@@ -89,5 +91,14 @@ class Products extends React.Component {
     );
   }
 }
+
+Products.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  newPrice: PropTypes.string,
+  selectedCategory: PropTypes.string,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
+};
 
 export default Products;

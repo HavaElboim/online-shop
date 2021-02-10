@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Products from "../Products/Products";
 import "./SaleCountdown.css";
+import PropTypes from "prop-types";
 
 /* this component is called by the ProductDisplayClass component *
 
@@ -57,6 +58,14 @@ const SaleCountdown = (props) => {
       </div>
     </div>
   );
+};
+
+SaleCountdown.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default SaleCountdown;

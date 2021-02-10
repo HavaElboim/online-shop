@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ProductDisplayClass.css";
+import PropTypes from "prop-types";
+import sale from "./sale.png";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -29,6 +31,9 @@ const ProductDisplayClass = (props) => {
     (!props.selectedCategory || props.category === props.selectedCategory) && (
       <div className="product-card">
         <div className="product-info">
+          {this.state.newPrice && this.props.secondsLeft ? (
+            <img src={sale} alt="sale item"></img>
+          ) : null}
           <h6
             style={{
               color: newPrice ? color : "black",
@@ -54,6 +59,17 @@ const ProductDisplayClass = (props) => {
       </div>
     )
   );
+};
+
+ProductDisplayClass.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  salesProductsIds: PropTypes.number,
+  category: PropTypes.string,
 };
 
 export default ProductDisplayClass;
