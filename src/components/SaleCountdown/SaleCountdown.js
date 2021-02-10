@@ -1,6 +1,10 @@
 import React from "react";
 import Products from "../Products/Products";
 import "./SaleCountdown.css";
+/* to enable the use of PropTypes, install the propTypes package using
+npm install --save prop-types
+*/
+import PropTypes from "prop-types";
 
 /* this component is called by the ProductDisplayClass component *
 
@@ -63,4 +67,10 @@ class SaleCountdown extends React.Component {
   }
 }
 
+SaleCountdown.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+};
 export default SaleCountdown;
