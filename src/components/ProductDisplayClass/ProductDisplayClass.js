@@ -31,7 +31,7 @@ const ProductDisplayClass = (props) => {
     (!props.selectedCategory || props.category === props.selectedCategory) && (
       <div className="product-card">
         <div className="product-info">
-          {this.state.newPrice && this.props.secondsLeft ? (
+          {newPrice && secondsLeft ? (
             <img src={sale} alt="sale item"></img>
           ) : null}
           <h6
