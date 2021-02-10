@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductDisplayClass.css";
+import sale from "./sale.png";
 import PropTypes from "prop-types";
 
 /* this component is called from the Products class.
@@ -36,12 +37,18 @@ class ProductDisplayClass extends React.Component {
   /* renders an individual product card, containing product information and image.
   the information an image are obtained from the props which are passed from the ProductsContainerClass */
 
+  /* before <h6> :
+  /* {this.state.newPrice && <img src={sale} alt="sale item"></img>}*/
+
   render() {
     return (
       (!this.props.selectedCategory ||
         this.props.category === this.props.selectedCategory) && (
         <div className="product-card">
           <div className="product-info">
+            {this.state.newPrice && this.props.secondsLeft ? (
+              <img src={sale} alt="sale item"></img>
+            ) : null}
             <h6
               style={{
                 color: this.state.newPrice ? this.props.color : "black",
