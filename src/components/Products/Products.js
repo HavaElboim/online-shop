@@ -63,6 +63,7 @@ class Products extends React.Component {
               value={this.state.selectedCategory}
               onChange={this.handleChange}
             >
+              <option value="">All Products</option>
               <ListCategories products={this.state.products}></ListCategories>
             </select>
           )}
@@ -76,8 +77,7 @@ class Products extends React.Component {
               title={product.title}
               image={product.image}
               price={product.price}
-              newPrice={this.state.newPrice}
-              id={product.id}
+              productid={product.id}
               key={product.id}
               salesProductsIds={this.props.salesProductsIds}
               category={product.category}

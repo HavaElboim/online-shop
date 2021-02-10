@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Products from "../Products/Products";
 import "./SaleCountdown.css";
 
@@ -7,7 +7,65 @@ import "./SaleCountdown.css";
 /* counts down by seconds the time left until the end of the sale,
 and sets state of display message depending on whether the sale has finished */
 
-class SaleCountdown extends React.Component {
+const SaleCountdown = (props) => {
+  const {
+    color,
+    secondsLeft,
+    price,
+    newPrice,
+    selectedCategory,
+    salesProductsIds,
+    products,
+  } = props;
+
+  const [saleMessage, setSaleMessage] = useState("");
+
+  useEffect(() => {
+    setSaleMessage(
+      secondsLeft
+        ? `10% off!! ${secondsLeft} seconds left until the end of the Sale`
+        : "Sale over"
+    );
+    /*
+      countSecsId = setInterval() {
+        if (secondsLeft) {
+        setSecondsLeft(secondsLeft - 1 );
+      } else {
+        setColor("black");
+        clearInterval(countSecsId);
+      }
+    }, 1000);
+    */
+  }, [secondsLeft]);
+
+  /* passes the color of the sale items information using the state calculated above,
+  to the function which will set up the products objects */
+
+  return (
+    <div>
+      <h2 id="message">{saleMessage} </h2>
+      <div>
+        <Products
+          color={color}
+          secondsLeft={secondsLeft}
+          price={price}
+          newPrice={newPrice}
+          salesProductsIds={salesProductsIds}
+          products={products}
+          selectedCategory={selectedCategory}
+        ></Products>
+      </div>
+    </div>
+  );
+};
+
+export default SaleCountdown;
+
+/* class version:
+
+class ProductsContainerClass extends React.Component {
+
+  class SaleCountdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,27 +98,27 @@ class SaleCountdown extends React.Component {
     }, 1000);
   }
 
-  /* passes the color of the sale items information using the state calculated above,
-  to the function which will set up the products objects */
-
   render() {
     return (
       <div>
-        <h2 id="message">{this.state.saleMessage} </h2>
         <div>
-          <Products
-            color={this.state.color}
-            secondsLeft={this.state.secondsLeft}
-            price={this.state.price}
-            newPrice={this.state.newPrice}
-            salesProductsIds={this.props.salesProductsIds}
-            products={this.props.products}
-            selectedCategory={this.state.selectedCategory}
-          ></Products>
+          <div>
+            <h2>Products</h2>
+          </div>
+          <div>
+            <SaleCountdown
+              secondsLeft={this.props.secondsLeft}
+              color={this.props.color}
+              price={this.props.price}
+              newPrice={this.props.newPrice}
+              salesProductsIds={this.props.salesProductsIds}
+              products={this.props.products}
+              selectedCategory={this.props.selectedCategory}
+            ></SaleCountdown>
+          </div>
         </div>
       </div>
     );
   }
 }
-
-export default SaleCountdown;
+*/

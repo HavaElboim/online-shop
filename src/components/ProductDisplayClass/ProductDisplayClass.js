@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductDisplayClass.css";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
    If the product is a sale item, its title and sale price are colored until the sale ends 
    */
+
+const ProductDisplayClass = (props) => {
+  const { color, secondsLeft, price, productid, salesProductsIds } = props;
+  // const [price] = useState(props.price);
+  //const [newPrice] = useState(props.newPrice);
+
+  const [newPrice, setNewPrice] = useState("");
+
+  /* props.key is undefined */
+  useEffect(() => {
+    if (secondsLeft > 0 && salesProductsIds.includes(productid)) {
+      setNewPrice(` Sale: $ ${+(price * 0.9).toFixed(2)}`);
+    } else {
+      setNewPrice("");
+    }
+  }, [price, salesProductsIds, secondsLeft, newPrice, productid]);
+
+  /* renders an individual product card, containing product information and image.
+  the information an image are obtained from the props which are passed from the ProductsContainerClass */
+
+  return (
+    (!props.selectedCategory || props.category === props.selectedCategory) && (
+      <div className="product-card">
+        <div className="product-info">
+          <h6
+            style={{
+              color: newPrice ? color : "black",
+            }}
+          >
+            {props.title}
+          </h6>
+        </div>
+        <div className="product-image">
+          <img src={props.image} alt={""} />
+        </div>
+        <div className="product-info">
+          <h5>$ {price}</h5>
+          <h5
+            style={{
+              color: color,
+              display: color === "black" ? "none" : "block",
+            }}
+          >
+            {newPrice}
+          </h5>
+        </div>
+      </div>
+    )
+  );
+};
+
+export default ProductDisplayClass;
+
+/* class version:
 
 class ProductDisplayClass extends React.Component {
   state = {
@@ -14,6 +68,8 @@ class ProductDisplayClass extends React.Component {
     category: this.props.category,
     selectedCategory: this.props.selectedCategory,
   };
+
+ProductDisplayClass(props) {
 
   showSalePrice() {
     if (
@@ -32,10 +88,7 @@ class ProductDisplayClass extends React.Component {
     this.showSalePrice();
   }
 
-  /* renders an individual product card, containing product information and image.
-  the information an image are obtained from the props which are passed from the ProductsContainerClass */
-
-  render() {
+render() { 
     return (
       (!this.props.selectedCategory ||
         this.props.category === this.props.selectedCategory) && (
@@ -68,5 +121,4 @@ class ProductDisplayClass extends React.Component {
     );
   }
 }
-
-export default ProductDisplayClass;
+*/

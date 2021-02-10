@@ -1,6 +1,32 @@
 import React from "react";
 import SaleCountdown from "../SaleCountdown/SaleCountdown";
 
+const ProductsContainerClass = (props) => {
+  return (
+    <div>
+      <div>
+        <div>
+          <h2>Products</h2>
+        </div>
+        <div>
+          <SaleCountdown
+            color={props.color}
+            secondsLeft={props.secondsLeft}
+            price={props.price}
+            selectedCategory={props.selectedCategory}
+            salesProductsIds={props.salesProductsIds}
+            products={props.products}
+          ></SaleCountdown>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductsContainerClass;
+
+/* class form:
+
 class ProductsContainerClass extends React.Component {
   render() {
     return (
@@ -25,5 +51,4 @@ class ProductsContainerClass extends React.Component {
     );
   }
 }
-
-export default ProductsContainerClass;
+*/

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderClass from "./components/HeaderClass/HeaderClass";
 import ProductsContainerClass from "./components/ProductsContainerClass/ProductsContainerClass";
 import "./utils";
@@ -39,6 +39,51 @@ const groupBy = (xs, key) =>
 
 
   */
+const App = () => {
+  //const [color, setColor] = useState("red");
+  const [color] = useState("red");
+  const [secondsLeft, setSecondsLeft] = useState(15);
+  const [price, setPrice] = useState(0);
+  const [salesProductsIds, setSalesProductsIds] = useState([1, 3, 5, 6]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [products, setProducts] = useState([]);
+
+  const listCategories = (products) => {
+    this.setState({
+      categories: (products) => Object.keys(groupBy(products, "category")),
+    });
+  };
+
+  return (
+    <div>
+      <HeaderClass
+        categories={categories}
+        selectedCategory={selectedCategory}
+        products={products}
+        listCategories={listCategories}
+      ></HeaderClass>
+      <ProductsContainerClass
+        color={color}
+        secondsLeft={secondsLeft}
+        price={price}
+        setPrice={setPrice}
+        salesProductsIds={salesProductsIds}
+        selectedCategory={selectedCategory}
+        listCategories={listCategories}
+        products={products}
+      >
+        Some child
+      </ProductsContainerClass>
+    </div>
+  );
+};
+
+export default App;
+
+/*
+version using classes:
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -53,18 +98,12 @@ class App extends React.Component {
       products: [],
     };
   }
-  /*
-  componentDidMount() {
-    this.setState({
-      categories: Object.keys(groupBy(this.state.products, "category")),
-    });
-  }*/
 
   listCategories = (products) => {
     this.setState({
       categories: (products) => Object.keys(groupBy(products, "category")),
     });
-    /* add also the option to not select any category */
+ 
     this.setState({ categories: ["Select...", ...this.state.categories] });
   };
 
@@ -92,33 +131,5 @@ class App extends React.Component {
       </div>
     );
   }
-  /*
-  state = { todos: [] };
-  addTodo = (title) => {
-    const newTodo = {
-      id: this.state.todos.length + 1,
-      title,
-      userId: 0,
-      completed: false,
-    };
-    this.setState(({ todos }) => ({ todos: [newTodo, ...todos] }));
-  };
-  render() {
-    return (
-      <div>
-        <AddTodo onAdd={this.addTodo} />
-        {this.state.todos.map((todo) => (
-          <Todo key={todo.id} id={todo.id} title={todo.title} />
-        ))}
-      </div>
-    );
-  }
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((data) => this.setState({ todos: data }));
-  }
-  */
 }
-
-export default App;
+*/
