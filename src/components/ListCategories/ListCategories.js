@@ -1,5 +1,6 @@
 import React from "react";
 import "./ListCategories.css";
+import PropTypes from "prop-types";
 
 class ListCategories extends React.Component {
   state = {
@@ -62,5 +63,20 @@ class ListCategories extends React.Component {
     );
   }
 }
+
+/* see full list of propTypes options here:
+https://reactjs.org/docs/typechecking-with-proptypes.html
+*/
+
+ListCategories.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  salesProductsIds: PropTypes.number,
+  category: PropTypes.string,
+};
 
 export default ListCategories;

@@ -1,5 +1,6 @@
 import React from "react";
 import SaleCountdown from "../SaleCountdown/SaleCountdown";
+import PropTypes from "prop-types";
 
 class ProductsContainerClass extends React.Component {
   render() {
@@ -25,5 +26,12 @@ class ProductsContainerClass extends React.Component {
     );
   }
 }
+
+ProductsContainerClass.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+};
 
 export default ProductsContainerClass;

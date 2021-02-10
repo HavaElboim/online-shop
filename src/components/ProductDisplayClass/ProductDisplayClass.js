@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductDisplayClass.css";
+import PropTypes from "prop-types";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -68,5 +69,16 @@ class ProductDisplayClass extends React.Component {
     );
   }
 }
+
+ProductDisplayClass.propTypes = {
+  secondsLeft: PropTypes.number,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  selectedCategory: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  salesProductsIds: PropTypes.number,
+  category: PropTypes.string,
+};
 
 export default ProductDisplayClass;

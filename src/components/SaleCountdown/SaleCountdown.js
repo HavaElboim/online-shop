@@ -72,5 +72,7 @@ SaleCountdown.propTypes = {
   color: PropTypes.string,
   price: PropTypes.number,
   selectedCategory: PropTypes.string,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
 };
+
 export default SaleCountdown;

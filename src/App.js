@@ -53,12 +53,6 @@ class App extends React.Component {
       products: [],
     };
   }
-  /*
-  componentDidMount() {
-    this.setState({
-      categories: Object.keys(groupBy(this.state.products, "category")),
-    });
-  }*/
 
   listCategories = (products) => {
     this.setState({
@@ -86,39 +80,10 @@ class App extends React.Component {
           selectedCategory={this.state.selectedCategory}
           listCategories={this.listCategories}
           products={this.state.products}
-        >
-          Some child
-        </ProductsContainerClass>
+        ></ProductsContainerClass>
       </div>
     );
   }
-  /*
-  state = { todos: [] };
-  addTodo = (title) => {
-    const newTodo = {
-      id: this.state.todos.length + 1,
-      title,
-      userId: 0,
-      completed: false,
-    };
-    this.setState(({ todos }) => ({ todos: [newTodo, ...todos] }));
-  };
-  render() {
-    return (
-      <div>
-        <AddTodo onAdd={this.addTodo} />
-        {this.state.todos.map((todo) => (
-          <Todo key={todo.id} id={todo.id} title={todo.title} />
-        ))}
-      </div>
-    );
-  }
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((data) => this.setState({ todos: data }));
-  }
-  */
 }
 
 export default App;
