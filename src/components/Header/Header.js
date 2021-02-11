@@ -17,17 +17,16 @@ const Header = (props) => {
   return (
     <div>
       <h1> App</h1>
-      <h2>Header</h2>
       <SaleCountdown
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
       ></SaleCountdown>
       {products.length > 0 && (
-        <CategorySelect>
+        <CategorySelect
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           products={products}
-        </CategorySelect>
+        ></CategorySelect>
       )}
     </div>
   );
@@ -42,3 +41,16 @@ Header.propTypes = {
 /* need to add proptypes of products*/
 
 export default Header;
+
+/*
+      <SaleCountdown
+        secondsLeft={secondsLeft}
+        setSecondsLeft={setSecondsLeft}
+      ></SaleCountdown>
+      {products.length > 0 && (
+        <CategorySelect>
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          products={products}
+        </CategorySelect>
+        */

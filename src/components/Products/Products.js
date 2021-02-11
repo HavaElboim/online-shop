@@ -1,26 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductDisplayClass from "../ProductDisplayClass/ProductDisplayClass";
 import "./Products.css";
 import PropTypes from "prop-types";
 
 const Products = (props) => {
   const {
-    categories,
-    selectedCategory,
     color,
     secondsLeft,
     salesProductsIds,
+    selectedCategory,
+    products,
   } = props;
-
-  const [products, setProducts] = useState(getProducts());
-
-  async function getProducts() {
-    let tempProducts = [];
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((tempProducts) => setProducts(tempProducts));
-    console.log(tempProducts);
-  }
 
   // maps the array containing the shop information to set up individual products items
   // and passes via to the ProductsDisplayClass which will starts the sale countdown and which calls the  */
@@ -33,15 +23,14 @@ const Products = (props) => {
             <ProductDisplayClass
               color={color}
               secondsLeft={secondsLeft}
+              salesProductsIds={salesProductsIds}
+              selectedCategory={selectedCategory}
               title={product.title}
               image={product.image}
               price={product.price}
               productid={product.id}
-              key={product.id}
-              salesProductsIds={salesProductsIds}
               category={product.category}
-              categories={categories}
-              selectedCategory={selectedCategory}
+              key={product.id}
             ></ProductDisplayClass>
           ))}
         </div>

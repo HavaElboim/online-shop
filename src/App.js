@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import ProductsContainerClass from "./components/ProductsContainerClass/ProductsContainerClass";
 //import "./utils";
@@ -22,10 +22,20 @@ const App = () => {
   //const [color, setColor] = useState("red");
   const [color] = useState("red");
   const [secondsLeft, setSecondsLeft] = useState(65);
-  const [price, setPrice] = useState(0);
   const [salesProductsIds] = useState([1, 3, 5, 6]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((result) => result.json())
+      .then((data) => {
+        setProducts(data);
+      });
+    console.log("fetched ");
+  }, []);
+
+  console.log("prod are ", products);
 
   return (
     <div>
@@ -39,12 +49,9 @@ const App = () => {
       <ProductsContainerClass
         color={color}
         secondsLeft={secondsLeft}
-        price={price}
-        setPrice={setPrice}
         salesProductsIds={salesProductsIds}
         selectedCategory={selectedCategory}
         products={products}
-        setProducts={setProducts}
       ></ProductsContainerClass>
     </div>
   );

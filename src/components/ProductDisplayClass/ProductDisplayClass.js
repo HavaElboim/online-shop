@@ -12,13 +12,13 @@ const ProductDisplayClass = (props) => {
   const {
     color,
     secondsLeft,
+    salesProductsIds,
+    selectedCategory,
     title,
     image,
     price,
     productid,
-    salesProductsIds,
     category,
-    selectedCategory,
   } = props;
 
   const newPrice = salesProductsIds.includes(productid)
