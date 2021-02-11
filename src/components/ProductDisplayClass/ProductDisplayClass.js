@@ -3,6 +3,11 @@ import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
 
+/*
+Warning: Failed prop type: Invalid prop `salesProductsIds` of type `array` supplied to `ProductDisplayClass`, 
+expected `number`.
+*/
+
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
    If the product is a sale item, its title and sale price are colored until the sale ends 
