@@ -1,34 +1,12 @@
 import React, { useState } from "react";
-import HeaderClass from "./components/HeaderClass/HeaderClass";
+import Header from "./components/Header/Header";
 import ProductsContainerClass from "./components/ProductsContainerClass/ProductsContainerClass";
-import "./utils";
+//import "./utils";
 
 //const salesProductsIds = [1, 3, 5, 6];
 // import './App.css';
 
 // import shuki, {arr1} from './efrat.js'
-
-/*reduce:
- *
- * array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
- *
- * xs = name of array
- * (rv,x) => arrow fn passed to reduce
- * rv = The initialValue, or the previously returned value of the function
- *
- * The reduce() method reduces the array to a single value.
- * The reduce() method executes a provided function for each value of the array (from left-to-right).
- * The return value of the function is stored in an accumulator (result/total).
- * Note: reduce() does not execute the function for array elements without values.
- * Note: This method does not change the original array.
- *
- * Call this function with xs as the list of products and key as "category"
- */
-const groupBy = (xs, key) =>
-  xs.reduce((rv, x) => {
-    rv[x[key]] = true || [];
-    return rv;
-  }, {});
 
 /* App calls ProductsContainerClass
   which calls SaleCountdown
@@ -37,32 +15,27 @@ const groupBy = (xs, key) =>
   ProductDisplayClass renders each product seperately in a product card.
   Products maps the array containing the shop information into separate items each containing info of one product.
 
-
+Header calls SaleCountdown component which counts the time until end of sale and sets the Sale Message in the Header
+Header also calls CategorySelect component to choose products filter. 
   */
 const App = () => {
   //const [color, setColor] = useState("red");
   const [color] = useState("red");
-  const [secondsLeft, setSecondsLeft] = useState(15);
+  const [secondsLeft, setSecondsLeft] = useState(65);
   const [price, setPrice] = useState(0);
-  const [salesProductsIds, setSalesProductsIds] = useState([1, 3, 5, 6]);
-  const [categories, setCategories] = useState([]);
+  const [salesProductsIds] = useState([1, 3, 5, 6]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setProducts] = useState([]);
 
-  const listCategories = (products) => {
-    this.setState({
-      categories: (products) => Object.keys(groupBy(products, "category")),
-    });
-  };
-
   return (
     <div>
-      <HeaderClass
-        categories={categories}
+      <Header
         selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        secondsLeft={secondsLeft}
+        setSecondsLeft={setSecondsLeft}
         products={products}
-        listCategories={listCategories}
-      ></HeaderClass>
+      ></Header>
       <ProductsContainerClass
         color={color}
         secondsLeft={secondsLeft}
@@ -70,11 +43,9 @@ const App = () => {
         setPrice={setPrice}
         salesProductsIds={salesProductsIds}
         selectedCategory={selectedCategory}
-        listCategories={listCategories}
         products={products}
-      >
-        Some child
-      </ProductsContainerClass>
+        setProducts={setProducts}
+      ></ProductsContainerClass>
     </div>
   );
 };

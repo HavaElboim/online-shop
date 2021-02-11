@@ -8,4 +8,4 @@ const products = [];
 
 const categories = Object.keys(groupBy(products, "category"));
 
-console.log(categories); /* empry */
+console.log(categories); /* empty */

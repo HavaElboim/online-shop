@@ -1,8 +1,16 @@
 import React from "react";
-import SaleCountdown from "../SaleCountdown/SaleCountdown";
 import PropTypes from "prop-types";
+import Products from "../Products/Products";
 
 const ProductsContainerClass = (props) => {
+  const {
+    color,
+    secondsLeft,
+    price,
+    selectedCategory,
+    salesProductsIds,
+  } = props;
+
   return (
     <div>
       <div>
@@ -10,14 +18,15 @@ const ProductsContainerClass = (props) => {
           <h2>Products</h2>
         </div>
         <div>
-          <SaleCountdown
-            color={props.color}
-            secondsLeft={props.secondsLeft}
-            price={props.price}
-            selectedCategory={props.selectedCategory}
-            salesProductsIds={props.salesProductsIds}
-            products={props.products}
-          ></SaleCountdown>
+          <div>
+            <Products
+              color={color}
+              secondsLeft={secondsLeft}
+              price={price}
+              salesProductsIds={salesProductsIds}
+              selectedCategory={selectedCategory}
+            ></Products>
+          </div>
         </div>
       </div>
     </div>
@@ -29,6 +38,7 @@ ProductsContainerClass.propTypes = {
   color: PropTypes.string,
   price: PropTypes.number,
   selectedCategory: PropTypes.string,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default ProductsContainerClass;

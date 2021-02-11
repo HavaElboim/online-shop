@@ -1,133 +1,70 @@
 import React, { useState, useEffect } from "react";
-import Products from "../Products/Products";
 import "./SaleCountdown.css";
 import PropTypes from "prop-types";
 
-/* this component is called by the ProductDisplayClass component *
+/* this component is called by the Header component *
 
 /* counts down by seconds the time left until the end of the sale,
 and sets state of display message depending on whether the sale has finished */
 
 const SaleCountdown = (props) => {
-  const {
-    color,
-    secondsLeft,
-    price,
-    newPrice,
-    selectedCategory,
-    salesProductsIds,
-    products,
-  } = props;
+  const { secondsLeft, setSecondsLeft } = props;
 
-  const [saleMessage, setSaleMessage] = useState("");
+  const convertToDHMS = () => {
+    let temp = "";
+    if (secondsLeft) {
+      temp = `
+      ${Math.floor(secondsLeft / (60 * 60 * 24))}:${Math.floor(
+        (secondsLeft / (60 * 60)) % 24
+      )}:`;
+      temp = `${temp}${Math.floor((secondsLeft / 60) % 60)}:${Math.floor(
+        secondsLeft % 60
+      )}`;
+      //console.log("DHMS left:", temp);
+      return temp;
+    }
+  };
 
+  const [DHMSLeft, setDHMSLeft] = useState(convertToDHMS());
+
+  /* Each time the state of DHMSLeft is updated, useEffect sets a 1 second timeout.
+  At the end of the timeout, the state of the DHMSLeft and secondsLeft update, and so the useEffect runs again,
+  and sets another 1 second timeout.
+  If the secondsLeft reaches zero, 
+ */
   useEffect(() => {
-    setSaleMessage(
-      secondsLeft
-        ? `10% off!! ${secondsLeft} seconds left until the end of the Sale`
-        : "Sale over"
-    );
-    /*
-      countSecsId = setInterval() {
-        if (secondsLeft) {
-        setSecondsLeft(secondsLeft - 1 );
-      } else {
-        setColor("black");
-        clearInterval(countSecsId);
+    //console.log("running useEffect for TImeout");
+    const countdown = setTimeout(() => {
+      if (secondsLeft) {
+        setSecondsLeft(secondsLeft - 1);
       }
+      //console.log("in setTimeout");
+      setDHMSLeft(convertToDHMS());
     }, 1000);
-    */
-  }, [secondsLeft]);
+    // Clear timeout if the component is unmounted
+    return () => clearTimeout(countdown);
+  });
+  //The return will runs each time useEffect finishes the timeout except for the first time
+  // and clears the timeout if the component is unmounted
 
-  /* passes the color of the sale items information using the state calculated above,
-  to the function which will set up the products objects */
+  const saleMessage = () => {
+    return secondsLeft
+      ? `10% off!! ${convertToDHMS(
+          secondsLeft
+        )} days left until the end of the Sale`
+      : "Sale over";
+  };
 
   return (
     <div>
-      <h2 id="message">{saleMessage} </h2>
-      <div>
-        <Products
-          color={color}
-          secondsLeft={secondsLeft}
-          price={price}
-          newPrice={newPrice}
-          salesProductsIds={salesProductsIds}
-          products={products}
-          selectedCategory={selectedCategory}
-        ></Products>
-      </div>
+      <h2 id="message">{saleMessage()} </h2>
     </div>
   );
 };
 
 SaleCountdown.propTypes = {
   secondsLeft: PropTypes.number,
-  color: PropTypes.string,
-  price: PropTypes.number,
-  selectedCategory: PropTypes.string,
-  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
+  setSecondsLeft: PropTypes.func,
 };
 
 export default SaleCountdown;
-
-/* class version:
-
-class ProductsContainerClass extends React.Component {
-
-  class SaleCountdown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      secondsLeft: this.props.secondsLeft,
-      saleMessage: "",
-      color: this.props.color,
-      price: this.props.price,
-      newPrice: this.props.newPrice,
-      selectedCategory: this.props.selectedCategory,
-    };
-  }
-
-  displaySaleMessage() {
-    this.setState({
-      saleMessage: this.state.secondsLeft
-        ? `10% off!! ${this.state.secondsLeft} seconds left until the end of the Sale`
-        : "Sale over",
-    });
-  }
-  componentDidMount() {
-    this.countSecsId = setInterval(() => {
-      this.displaySaleMessage();
-      if (this.state.secondsLeft) {
-        this.setState({ secondsLeft: this.state.secondsLeft - 1 });
-      } else {
-        this.setState({ color: "black" });
-        clearInterval(this.countSecsId);
-        this.render();
-      }
-    }, 1000);
-  }
-
-  render() {
-    return (
-      <div>
-        <div>
-          <div>
-            <h2>Products</h2>
-          </div>
-          <div>
-            <SaleCountdown
-              secondsLeft={this.props.secondsLeft}
-              color={this.props.color}
-              price={this.props.price}
-              newPrice={this.props.newPrice}
-              salesProductsIds={this.props.salesProductsIds}
-              products={this.props.products}
-              selectedCategory={this.props.selectedCategory}
-            ></SaleCountdown>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-*/
