@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./SaleCountdown.css";
 import PropTypes from "prop-types";
 
@@ -20,12 +20,9 @@ const SaleCountdown = (props) => {
       temp = `${temp}${Math.floor((secondsLeft / 60) % 60)}:${Math.floor(
         secondsLeft % 60
       )}`;
-      //console.log("DHMS left:", temp);
       return temp;
     }
   };
-
-  const [DHMSLeft, setDHMSLeft] = useState(convertToDHMS());
 
   /* Each time the state of DHMSLeft is updated, useEffect sets a 1 second timeout.
   At the end of the timeout, the state of the DHMSLeft and secondsLeft update, and so the useEffect runs again,
@@ -33,13 +30,10 @@ const SaleCountdown = (props) => {
   If the secondsLeft reaches zero, 
  */
   useEffect(() => {
-    //console.log("running useEffect for TImeout");
     const countdown = setTimeout(() => {
       if (secondsLeft) {
         setSecondsLeft(secondsLeft - 1);
       }
-      //console.log("in setTimeout");
-      setDHMSLeft(convertToDHMS());
     }, 1000);
     // Clear timeout if the component is unmounted
     return () => clearTimeout(countdown);

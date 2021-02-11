@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProductDisplayClass from "../ProductDisplayClass/ProductDisplayClass";
 import "./Products.css";
 import PropTypes from "prop-types";
-
-/*
-componentDidMount() {
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((products) => this.setState({ products }));
-}
-*/
 
 const Products = (props) => {
   const {
@@ -29,12 +21,6 @@ const Products = (props) => {
       .then((tempProducts) => setProducts(tempProducts));
     console.log(tempProducts);
   }
-  /*
-   useEffect(() => {(
- getProducts()
-   ),[]}
-  // }, []); //pass empty parameter to do the fetch only once, else will keep redoing the useEffect
-*/
 
   // maps the array containing the shop information to set up individual products items
   // and passes via to the ProductsDisplayClass which will starts the sale countdown and which calls the  */

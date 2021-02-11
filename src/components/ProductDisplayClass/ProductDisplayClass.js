@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
-
-/*
-Warning: Failed prop type: Invalid prop `salesProductsIds` of type `array` supplied to `ProductDisplayClass`, 
-expected `number`.
-*/
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -26,15 +21,9 @@ const ProductDisplayClass = (props) => {
     selectedCategory,
   } = props;
 
-  const [newPrice, setNewPrice] = useState("");
-
-  useEffect(() => {
-    if (secondsLeft > 0 && salesProductsIds.includes(productid)) {
-      setNewPrice(` Sale: $ ${+(price * 0.9).toFixed(2)}`);
-    } else {
-      setNewPrice("");
-    }
-  }, [price, salesProductsIds, secondsLeft, newPrice, productid]);
+  const newPrice = salesProductsIds.includes(productid)
+    ? ` Sale: $ ${+(price * 0.9).toFixed(2)}`
+    : "";
 
   /* renders an individual product card, containing product information and image.
   the information an image are obtained from the props which are passed from the ProductsContainerClass */
@@ -48,7 +37,7 @@ const ProductDisplayClass = (props) => {
           ) : null}
           <h6
             style={{
-              color: newPrice ? color : "black",
+              color: newPrice && secondsLeft ? color : "black",
             }}
           >
             {title}
@@ -62,7 +51,7 @@ const ProductDisplayClass = (props) => {
           <h5
             style={{
               color: color,
-              display: newPrice ? "none" : "block",
+              display: newPrice && secondsLeft ? "block" : "none",
             }}
           >
             {newPrice}
@@ -80,7 +69,7 @@ ProductDisplayClass.propTypes = {
   selectedCategory: PropTypes.string,
   title: PropTypes.string,
   image: PropTypes.string,
-  salesProductsIds: PropTypes.number,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
   category: PropTypes.string,
 };
 
