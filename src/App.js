@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/Header/Header";
-import ProductsContainerClass from "./components/ProductsContainerClass/ProductsContainerClass";
+//for SPAP:
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+//imports of pages definitions
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+
 //import "./utils";
 
 //const salesProductsIds = [1, 3, 5, 6];
 // import './App.css';
-
-// import shuki, {arr1} from './efrat.js'
 
 /* App calls ProductsContainerClass
   which calls SaleCountdown
@@ -19,41 +21,35 @@ Header calls SaleCountdown component which counts the time until end of sale and
 Header also calls CategorySelect component to choose products filter. 
   */
 const App = () => {
-  //const [color, setColor] = useState("red");
-  const [color] = useState("red");
-  const [secondsLeft, setSecondsLeft] = useState(65);
-  const [salesProductsIds] = useState([1, 3, 5, 6]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((result) => result.json())
-      .then((data) => {
-        setProducts(data);
-      });
-    console.log("fetched ");
-  }, []);
-
-  console.log("prod are ", products);
-
   return (
-    <div>
-      <Header
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        secondsLeft={secondsLeft}
-        setSecondsLeft={setSecondsLeft}
-        products={products}
-      ></Header>
-      <ProductsContainerClass
-        color={color}
-        secondsLeft={secondsLeft}
-        salesProductsIds={salesProductsIds}
-        selectedCategory={selectedCategory}
-        products={products}
-      ></ProductsContainerClass>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/Home">Home</Link>
+            </li>
+            <li>
+              <Link to="/About">About</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+        renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/Home">
+            <Home />
+          </Route>
+          <Route path="/About">
+            <About />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
