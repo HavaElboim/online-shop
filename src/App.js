@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //imports of pages definitions
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
+import ProductInfo from "./pages/ProductInfo/ProductInfo";
 
 //import "./utils";
 
@@ -27,7 +28,7 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/Home">Home</Link>
+              <Link to="/Home">Home2</Link>
             </li>
             <li>
               <Link to="/About">About</Link>
@@ -43,6 +44,9 @@ const App = () => {
           </Route>
           <Route path="/About">
             <About />
+          </Route>
+          <Route path="/products/:product.id" component={ProductInfo}>
+            <ProductInfo />
           </Route>
           <Route path="/">
             <Home />

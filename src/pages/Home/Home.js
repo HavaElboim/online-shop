@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-//for SPAP:
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 //components of content:
 import Header from "../../components/Header/Header";
 import ProductsContainerClass from "../../components/ProductsContainerClass/ProductsContainerClass";
