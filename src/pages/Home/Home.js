@@ -20,7 +20,10 @@ const Home = () => {
     console.log("fetched ");
   }, []);
 
-  console.log("prods are ", products);
+  useEffect(() => {
+    console.log("prods are ", products);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ProductDisplayClass from "../ProductDisplayClass/ProductDisplayClass";
 import "./Products.css";
 import PropTypes from "prop-types";
@@ -14,6 +14,17 @@ const Products = (props) => {
     products,
   } = props;
 
+  /* the line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    stops the warning
+    "React Hook useEffect has a missing dependency: ''"
+    where it expects to see [products] instead of []
+    */
+  useEffect(() => {
+    console.log("products are: ", products);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // maps the array containing the shop information to set up individual products items
   // and passes via to the ProductsDisplayClass which will starts the sale countdown and which calls the  */
   /*
@@ -26,6 +37,7 @@ const Products = (props) => {
                 key={product.id}
               ></Route>
               */
+  console.log("in Products");
   return (
     <div>
       {products.length > 0 && (

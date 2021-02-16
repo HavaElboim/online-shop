@@ -12,8 +12,6 @@ const Header = (props) => {
     products,
   } = props;
 
-  useEffect(() => {}, [products]);
-
   return (
     <div>
       <h1> App</h1>

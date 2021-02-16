@@ -72,7 +72,8 @@ const SaleCountdown = (props) => {
 
     // Clear timeout if the component is unmounted
     return () => clearTimeout(countdown);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //The return will runs each time useEffect finishes the timeout except for the first time
   // and clears the timeout if the component is unmounted
 
