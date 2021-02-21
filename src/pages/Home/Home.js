@@ -10,6 +10,7 @@ const Home = () => {
   const [salesProductsIds] = useState([1, 3, 5, 6]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setProducts] = useState([]);
+  const [isSale, setSale] = useState("true");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -34,6 +35,8 @@ const Home = () => {
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
         products={products}
+        isSale={isSale}
+        setSale={setSale}
       ></Header>
       <ProductsContainerClass
         color={color}
@@ -41,6 +44,7 @@ const Home = () => {
         salesProductsIds={salesProductsIds}
         selectedCategory={selectedCategory}
         products={products}
+        isSale={isSale}
       ></ProductsContainerClass>
     </div>
   );

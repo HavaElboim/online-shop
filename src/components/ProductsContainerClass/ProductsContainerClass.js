@@ -9,6 +9,7 @@ const ProductsContainerClass = (props) => {
     salesProductsIds,
     selectedCategory,
     products,
+    isSale,
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const ProductsContainerClass = (props) => {
               salesProductsIds={salesProductsIds}
               selectedCategory={selectedCategory}
               products={products}
+              isSale={isSale}
             ></Products>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SaleCountdown from "../SaleCountdown/SaleCountdown";
 import PropTypes from "prop-types";
 import CategorySelect from "../CategorySelect/CategorySelect";
@@ -9,6 +9,8 @@ const Header = (props) => {
     setSelectedCategory,
     secondsLeft,
     setSecondsLeft,
+    isSale,
+    setSale,
     products,
   } = props;
 
@@ -18,6 +20,8 @@ const Header = (props) => {
       <SaleCountdown
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
+        isSale={isSale}
+        setSale={setSale}
       ></SaleCountdown>
       {products.length > 0 && (
         <CategorySelect

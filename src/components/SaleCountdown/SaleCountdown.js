@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 and sets state of display message depending on whether the sale has finished */
 
 const SaleCountdown = (props) => {
-  const { secondsLeft, setSecondsLeft } = props;
+  const { secondsLeft, setSecondsLeft, isSale, setSale } = props;
 
   const convertToDHMS = () => {
     let temp = "";
@@ -53,6 +53,9 @@ const SaleCountdown = (props) => {
       if (secondsLeft) {
         setSecondsLeft(secondsLeft - 1);
         console.log("counting down, secs:", secondsLeft);
+        setSale("true");
+      } else {
+        setSale("false");
       }
     }, 1000);
 

@@ -33,6 +33,9 @@ const App = () => {
             <li>
               <Link to="/About">About</Link>
             </li>
+            <li>
+              <Link to="/products/2">prod2</Link>
+            </li>
           </ul>
         </nav>
 
@@ -46,6 +49,9 @@ const App = () => {
             <About />
           </Route>
           <Route exact path="/products/:product.id" component={ProductInfo}>
+            <ProductInfo />
+          </Route>
+          <Route exact path="/products/2" component={ProductInfo}>
             <ProductInfo />
           </Route>
           <Route exact path="/">

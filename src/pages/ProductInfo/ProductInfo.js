@@ -3,17 +3,25 @@ import { React, useEffect, useState } from "react";
 import sale from "../../components/ProductDisplayClass/sale.png";
 
 const ProductInfo = (props) => {
-  const { productid, price, image, title, isSale, newPrice } = props;
-  //const { match: { params } } = props;
-
+  const { productid, price, image, title, issale, newprice } = props;
+  /* const {
+    match: { params },
+  } = props;
+*/
   const [productData, setData] = useState([]);
 
   const color = "red";
+
+  //const [salesProductsIds] = [1, 3, 5, 6];
 
   useEffect(() => {
     console.log("ProductInfo props are :", props);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /*const newPrice = salesProductsIds.includes(productid)
+    ? ` Sale: $ ${+(price * 0.9).toFixed(2)}`
+    : "";*/
 
   /*useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -25,10 +33,40 @@ const ProductInfo = (props) => {
   }, []);*/
 
   useEffect(() => {
+    console.log("productid ", productid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${productid}`)
       .then((response) => response.json())
       .then((data) => setData(data));
-  }, [productid]);
+    console.log(
+      "descr is ",
+      productData,
+      ` from https://fakestoreapi.com/products/${productid}`
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  });
+
+  /*
+
+    const [products, setProducts] = useState([]);
+  const [isSale, setSale] = useState("true");
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((result) => result.json())
+      .then((data) => {
+        setProducts(data);
+      });
+    console.log("fetched ");
+  }, []);
+
+  useEffect(() => {
+    console.log("prods are ", products);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);*/
 
   return (
     <div>
@@ -36,10 +74,10 @@ const ProductInfo = (props) => {
       <div>Your Product description:</div>
       <h1>{title}</h1>
       <div className="product-info">
-        {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}
+        {newprice && issale ? <img src={sale} alt="sale item"></img> : null}
         <h6
           style={{
-            color: newPrice && isSale ? color : "black",
+            color: newprice && issale ? color : "black",
           }}
         >
           {title}
@@ -53,10 +91,10 @@ const ProductInfo = (props) => {
         <h5
           style={{
             color: color,
-            display: newPrice && isSale ? "block" : "none",
+            display: newprice && issale ? "block" : "none",
           }}
         >
-          {newPrice}
+          {newprice}
         </h5>
         <h5>{productData.description}</h5>
       </div>

@@ -10,6 +10,7 @@ const Products = (props) => {
     salesProductsIds,
     selectedCategory,
     products,
+    isSale,
   } = props;
 
   /* the line
@@ -41,6 +42,43 @@ const Products = (props) => {
       {products.length > 0 && (
         <div className="product-filter">
           {products.map((product) => (
+            <ProductDisplayClass
+              color={color}
+              secondsLeft={secondsLeft}
+              salesProductsIds={salesProductsIds}
+              selectedCategory={selectedCategory}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              productid={product.id}
+              category={product.category}
+              isSale={isSale}
+              key={product.id}
+            ></ProductDisplayClass>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+Products.propTypes = {
+  selectedCategory: PropTypes.string,
+  categories: PropTypes.arrayOf(PropTypes.string),
+  secondsLeft: PropTypes.number,
+  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
+};
+
+/* need propTypes for products and setProducts */
+
+export default Products;
+
+/*
+return (
+    <div>
+      {products.length > 0 && (
+        <div className="product-filter">
+          {products.map((product) => (
             <div className="product-card">
               <ProductDisplayClass
                 color={color}
@@ -60,15 +98,4 @@ const Products = (props) => {
       )}
     </div>
   );
-};
-
-Products.propTypes = {
-  selectedCategory: PropTypes.string,
-  categories: PropTypes.arrayOf(PropTypes.string),
-  secondsLeft: PropTypes.number,
-  salesProductsIds: PropTypes.arrayOf(PropTypes.number),
-};
-
-/* need propTypes for products and setProducts */
-
-export default Products;
+  */
