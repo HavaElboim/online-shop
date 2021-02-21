@@ -169,31 +169,7 @@ h2 {
   padding-bottom: 10px;
   padding-top: 20px;
 }
-/*
-h5 {
-  font-weight: 500;
-  line-height: 1.7em;
-}
 
-h6 {
-  color: #666;
-  font-size: 14px;
-  padding-bottom: 5px;
-}
-
-label {
-  color: #666;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 2em;
-  text-transform: uppercase;
-}
-
-.products {
-  display: flex;
-  flex-wrap: wrap;
-}
-*/
 .product-card {
   display: flex;
   flex-direction: column;

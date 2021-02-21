@@ -39,16 +39,16 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Home">
+          <Route exact path="/Home">
             <Home />
           </Route>
           <Route path="/About">
             <About />
           </Route>
-          <Route path="/products/:product.id" component={ProductInfo}>
+          <Route exact path="/products/:product.id" component={ProductInfo}>
             <ProductInfo />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
@@ -59,6 +59,41 @@ const App = () => {
 
 export default App;
 
+/*
+import About from "./pages/About/About";
+import Home from "./pages/Home/Home";
+import TodoDetails from "./pages/TodoPage/TodoPage";
+
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/todos/:todoId" component={TodoDetails}>
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+*/
 /*
 version using classes:
 

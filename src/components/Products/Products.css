@@ -3,7 +3,8 @@
 .product-filter {
   display: flex;
   padding: 30px 0;
-  flex-wrap: wrap; /* else products are displayed in one long row and don't wrap onto more rows */
+  flex-wrap: wrap; /* otherwise products would be displayed in one long row and don't wrap onto more rows */
+  align-items: stretch;
 }
 
 .sort {

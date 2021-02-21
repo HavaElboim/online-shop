@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import ProductDisplayClass from "../ProductDisplayClass/ProductDisplayClass";
 import "./Products.css";
 import PropTypes from "prop-types";
-import { Link, Route } from "react-router-dom";
-import ProductInfo from "../../pages/ProductInfo/ProductInfo";
 
 const Products = (props) => {
   const {
@@ -21,7 +19,7 @@ const Products = (props) => {
     where it expects to see [products] instead of []
     */
   useEffect(() => {
-    console.log("products are: ", products);
+    console.log("In Products, products are: ", products);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,13 +41,7 @@ const Products = (props) => {
       {products.length > 0 && (
         <div className="product-filter">
           {products.map((product) => (
-            <div>
-              <Link to={`/ProductInfo/${product.id}`}>Details</Link>
-              <Route
-                path={`/ProductInfo/:${product.id}`}
-                component={ProductInfo}
-                key={product.id}
-              ></Route>
+            <div className="product-card">
               <ProductDisplayClass
                 color={color}
                 secondsLeft={secondsLeft}
