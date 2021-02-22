@@ -10,6 +10,7 @@ const ProductsContainerClass = (props) => {
     selectedCategory,
     products,
     isSale,
+    priceRange,
   } = props;
 
   return (
@@ -27,6 +28,7 @@ const ProductsContainerClass = (props) => {
               selectedCategory={selectedCategory}
               products={products}
               isSale={isSale}
+              priceRange={priceRange}
             ></Products>
           </div>
         </div>

@@ -11,6 +11,7 @@ const Products = (props) => {
     selectedCategory,
     products,
     isSale,
+    priceRange,
   } = props;
 
   /* the line
@@ -53,6 +54,7 @@ const Products = (props) => {
               productid={product.id}
               category={product.category}
               isSale={isSale}
+              priceRange={priceRange}
               key={product.id}
             ></ProductDisplayClass>
           ))}

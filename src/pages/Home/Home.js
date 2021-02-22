@@ -11,6 +11,7 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setProducts] = useState([]);
   const [isSale, setSale] = useState("true");
+  const [priceRange, setPriceRange] = useState([0, 200]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -21,14 +22,8 @@ const Home = () => {
     console.log("fetched ");
   }, []);
 
-  useEffect(() => {
-    console.log("prods are ", products);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div>
-      <h2>Home</h2>
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
@@ -37,6 +32,8 @@ const Home = () => {
         products={products}
         isSale={isSale}
         setSale={setSale}
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
       ></Header>
       <ProductsContainerClass
         color={color}
@@ -45,6 +42,7 @@ const Home = () => {
         selectedCategory={selectedCategory}
         products={products}
         isSale={isSale}
+        priceRange={priceRange}
       ></ProductsContainerClass>
     </div>
   );

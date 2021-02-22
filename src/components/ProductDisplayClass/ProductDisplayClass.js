@@ -22,6 +22,7 @@ const ProductDisplayClass = (props) => {
     productid,
     category,
     isSale,
+    priceRange,
   } = props;
 
   const newPrice = salesProductsIds.includes(productid)
@@ -45,7 +46,9 @@ const ProductDisplayClass = (props) => {
         */
 
   return (
-    (!selectedCategory || category === selectedCategory) && (
+    (!selectedCategory || category === selectedCategory) &&
+    price < priceRange[1] &&
+    price > priceRange[0] && (
       <div className="product-card">
         <div className="product-info">
           {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}

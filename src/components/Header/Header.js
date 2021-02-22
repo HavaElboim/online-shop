@@ -2,6 +2,8 @@ import React from "react";
 import SaleCountdown from "../SaleCountdown/SaleCountdown";
 import PropTypes from "prop-types";
 import CategorySelect from "../CategorySelect/CategorySelect";
+import SliderFilterPrice from "../SliderFilterPrice/SliderFilterPrice";
+import "./Header.css";
 
 const Header = (props) => {
   const {
@@ -12,11 +14,12 @@ const Header = (props) => {
     isSale,
     setSale,
     products,
+    priceRange,
+    setPriceRange,
   } = props;
 
   return (
     <div>
-      <h1> App</h1>
       <SaleCountdown
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
@@ -30,6 +33,14 @@ const Header = (props) => {
           products={products}
         ></CategorySelect>
       )}
+      <div className="price-range">
+        <span>Select Price range:</span>
+        <SliderFilterPrice
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          products={products}
+        ></SliderFilterPrice>
+      </div>
     </div>
   );
 };
@@ -44,15 +55,23 @@ Header.propTypes = {
 
 export default Header;
 
-/*
-      <SaleCountdown
-        secondsLeft={secondsLeft}
-        setSecondsLeft={setSecondsLeft}
-      ></SaleCountdown>
-      {products.length > 0 && (
-        <CategorySelect>
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          products={products}
-        </CategorySelect>
-        */
+/*      return (
+        <div>
+          <h1> App</h1>
+          <SaleCountdown
+            secondsLeft={secondsLeft}
+            setSecondsLeft={setSecondsLeft}
+            isSale={isSale}
+            setSale={setSale}
+          ></SaleCountdown>
+          {products.length > 0 && (
+            <CategorySelect
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              products={products}
+            ></CategorySelect>
+            <SliderFilterPrice priceRange={priceRange}></SliderFilterPrice}
+          )}
+        </div>
+      );
+      */
