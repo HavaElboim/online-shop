@@ -60,15 +60,6 @@ const ProductDisplayClass = (props) => {
           >
             {title}
           </h6>
-          <Link to={`/products/${productid}`}>
-            click
-            <Router>
-              <Route
-                path="/products/:product.id"
-                component={ProductInfo}
-              ></Route>
-            </Router>
-          </Link>
         </div>
         <div className="product-image">
           <img src={image} alt={""} />

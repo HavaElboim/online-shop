@@ -4,7 +4,7 @@ const ProductInfo = ({ match }) => {
   //const ProductInfo = (props) => {
   const [productData, setData] = useState({});
 
-  /*useEffect(() => {
+  useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${match.params.productid}`)
       .then((result) => result.json())
       .then(
@@ -19,10 +19,10 @@ const ProductInfo = ({ match }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <div>prod details: {productData.title}</div>;
-  */
-  console.log("in prodinfo page");
-  console.log("match is ", props);
-  return <div> asdfa}</div>;
+
+  //console.log("in prodinfo page");
+  //console.log("match is ", props);
+  //return <div> asdfa}</div>;
 };
 export default ProductInfo;
 
