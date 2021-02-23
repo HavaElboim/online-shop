@@ -3,7 +3,7 @@ import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
 //import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ProductInfo from "../../pages/ProductInfo/ProductInfo";
 
 /* this component is called from the Products class.

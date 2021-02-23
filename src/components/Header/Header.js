@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CategorySelect from "../CategorySelect/CategorySelect";
 import SliderFilterPrice from "../SliderFilterPrice/SliderFilterPrice";
 import "./Header.css";
+import ChangeThemeColors from "../ChangeThemeColors/ChangeThemeColors";
 
 const Header = (props) => {
   const {
@@ -20,6 +21,7 @@ const Header = (props) => {
 
   return (
     <div>
+      <ChangeThemeColors />
       <SaleCountdown
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}

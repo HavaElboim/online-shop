@@ -6,6 +6,9 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import ProductInfo from "./pages/ProductInfo/ProductInfo";
 
+// for theme context:
+import ThemeContext, { themes } from "./contexts/ThemeContexts";
+
 //import "./utils";
 
 //const salesProductsIds = [1, 3, 5, 6];
@@ -23,38 +26,40 @@ Header also calls CategorySelect component to choose products filter.
   */
 const App = () => {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/Home">Home</Link>
-            </li>
-            <li>
-              <Link to="/About">About</Link>
-            </li>
-          </ul>
-        </nav>
+    <ThemeContext.Provider value={themes}>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/Home">Home</Link>
+              </li>
+              <li>
+                <Link to="/About">About</Link>
+              </li>
+            </ul>
+          </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
+          {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
-        <Switch>
-          <Route exact path="/Home">
-            <Home />
-          </Route>
-          <Route path="/About">
-            <About />
-          </Route>
-          <Route path="/products">
-            <ProductInfo />
-          </Route>
-          <Route path="/products/:productid" component={ProductInfo}></Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route exact path="/Home">
+              <Home />
+            </Route>
+            <Route path="/About">
+              <About />
+            </Route>
+            <Route path="/products">
+              <ProductInfo />
+            </Route>
+            <Route path="/products/:productid" component={ProductInfo}></Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ThemeContext.Provider>
   );
 };
 
