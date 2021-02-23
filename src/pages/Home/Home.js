@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 //components of content:
 import Header from "../../components/Header/Header";
 import ProductsContainerClass from "../../components/ProductsContainerClass/ProductsContainerClass";
+
+//for theme context:
+import ThemeContext from "../../contexts/ThemeContexts";
 
 const Home = () => {
   const [color] = useState("red");
@@ -12,6 +15,9 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [isSale, setSale] = useState("true");
   const [priceRange, setPriceRange] = useState([0, 200]);
+
+  const theme = useContext(ThemeContext);
+  const [currentTheme, setCurrentTheme] = useState(theme.light);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -23,7 +29,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{ color: currentTheme.color, background: currentTheme.background }}
+    >
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}

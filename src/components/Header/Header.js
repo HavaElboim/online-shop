@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import SaleCountdown from "../SaleCountdown/SaleCountdown";
 import PropTypes from "prop-types";
 import CategorySelect from "../CategorySelect/CategorySelect";
 import SliderFilterPrice from "../SliderFilterPrice/SliderFilterPrice";
 import "./Header.css";
 import ChangeThemeColors from "../ChangeThemeColors/ChangeThemeColors";
+import ThemeContext from "../../contexts/ThemeContexts";
 
 const Header = (props) => {
   const {
@@ -19,8 +20,10 @@ const Header = (props) => {
     setPriceRange,
   } = props;
 
+  const theme = useContext(ThemeContext);
+
   return (
-    <div>
+    <div style={{ color: theme.foreground, background: theme.background }}>
       <ChangeThemeColors />
       <SaleCountdown
         secondsLeft={secondsLeft}

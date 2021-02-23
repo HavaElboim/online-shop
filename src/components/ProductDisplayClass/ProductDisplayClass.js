@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
 //import { Link } from "react-router-dom";
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ProductInfo from "../../pages/ProductInfo/ProductInfo";
+import ThemeContext from "../../contexts/ThemeContexts";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -25,6 +26,12 @@ const ProductDisplayClass = (props) => {
     isSale,
     priceRange,
   } = props;
+
+  const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    console.log("in ProductDisplayClass, theme is: ", theme);
+  }, []);
 
   const newPrice = salesProductsIds.includes(productid)
     ? ` Sale: $ ${+(price * 0.9).toFixed(2)}`
@@ -50,7 +57,10 @@ const ProductDisplayClass = (props) => {
     (!selectedCategory || category === selectedCategory) &&
     price < priceRange[1] &&
     price > priceRange[0] && (
-      <div className="product-card">
+      <div
+        className="product-card"
+        style={{ color: theme.foreground, background: theme.background }}
+      >
         <div className="product-info">
           {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}
           <h6
