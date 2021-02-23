@@ -45,12 +45,10 @@ const App = () => {
           <Route path="/About">
             <About />
           </Route>
-          <Route exact path="/products/:product.id" component={ProductInfo}>
+          <Route path="/products">
             <ProductInfo />
           </Route>
-          <Route exact path="/products/2" component={ProductInfo}>
-            <ProductInfo />
-          </Route>
+          <Route path="/products/:product.id" component={ProductInfo}></Route>
           <Route exact path="/">
             <Home />
           </Route>
@@ -61,6 +59,11 @@ const App = () => {
 };
 
 export default App;
+//<Route path="/products/:product.id" component={ProductInfo}></Route>
+
+/*<Route path="/products/:product.id">
+            <ProductInfo />
+          </Route>*/
 
 /*
 import About from "./pages/About/About";

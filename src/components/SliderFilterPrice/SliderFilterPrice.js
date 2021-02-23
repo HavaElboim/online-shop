@@ -1,6 +1,6 @@
-import React, { useStateת, useEffect } from "react";
+import React, { useEffect } from "react";
 // need to install and design: npm install antd
-import { Slider, Switch } from "antd";
+import { Slider } from "antd";
 import "antd/dist/antd.css";
 
 const SliderFilterPrice = (props) => {

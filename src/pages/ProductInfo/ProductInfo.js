@@ -1,29 +1,75 @@
 import { React, useEffect, useState } from "react";
+
+const ProductInfo = ({ match }) => {
+  //const ProductInfo = (props) => {
+  const [productData, setData] = useState({});
+
+  /*useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${match.params.productid}`)
+      .then((result) => result.json())
+      .then(
+        (data) => {
+          setData(data);
+          //fetched = true;
+        },
+        [match.params.productid]
+      );
+    console.log("fetched ");
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return <div>prod details: {productData.title}</div>;
+  */
+  console.log("in prodinfo page");
+  console.log("match is ", props);
+  return <div> asdfa}</div>;
+};
+export default ProductInfo;
+
+//import { React, useEffect, useState } from "react";
+////import { React } from "react";
+
 //import ProductDisplayClass from "../../components/ProductDisplayClass/ProductDisplayClass";
-import sale from "../../components/ProductDisplayClass/sale.png";
+//import sale from "../../components/ProductDisplayClass/sale.png";
 
-const ProductInfo = (props) => {
-  const { productid, price, image, title, issale, newprice } = props;
-  /* const {
-    match: { params },
-  } = props;
-*/
-  const [productData, setData] = useState([]);
+//const ProductInfo = ({ match }) => {
+//const [productData, setData] = useState([]);
 
-  const color = "red";
+//const color = "red";
 
-  //const [salesProductsIds] = [1, 3, 5, 6];
+//const [salesProductsIds] = [1, 3, 5, 6];
+/*
+  console.log("in productinfo");
+  return <div>product</div>;
+};
+export default ProductInfo;
+  /*
+  let fetched = false;
 
   useEffect(() => {
-    console.log("ProductInfo props are :", props);
+    fetch(`https://fakestoreapi.com/products/${match.params.productid}`)
+      .then((result) => result.json())
+      .then((data) => {
+        setData(data);
+        fetched = true;
+      });
+    console.log("fetched ");
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /*const newPrice = salesProductsIds.includes(productid)
+  if (fetched) {
+    console.log("displaying");
+    return <div>ProductInfo from :{match.params.productid} </div>;
+  }
+
+  */
+
+/*const newPrice = salesProductsIds.includes(productid)
     ? ` Sale: $ ${+(price * 0.9).toFixed(2)}`
     : "";*/
 
-  /*useEffect(() => {
+/*useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((result) => result.json())
       .then((data) => {
@@ -32,10 +78,7 @@ const ProductInfo = (props) => {
     console.log("fetched ");
   }, []);*/
 
-  useEffect(() => {
-    console.log("productid ", productid);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+/*
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${productid}`)
@@ -66,7 +109,7 @@ const ProductInfo = (props) => {
   useEffect(() => {
     console.log("prods are ", products);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);*/
+  }, []);
 
   return (
     <div>
@@ -100,9 +143,7 @@ const ProductInfo = (props) => {
       </div>
     </div>
   );
-};
-
-export default ProductInfo;
+  */
 
 /*
 

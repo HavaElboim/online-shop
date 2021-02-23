@@ -37,7 +37,7 @@ const Products = (props) => {
                 key={product.id}
               ></Route>
               */
-  console.log("in Products");
+  //  console.log("in Products");
   return (
     <div>
       {products.length > 0 && (

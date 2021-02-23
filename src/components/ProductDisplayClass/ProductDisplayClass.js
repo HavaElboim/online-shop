@@ -2,8 +2,9 @@ import React from "react";
 import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
-import { Link } from "react-router-dom";
-//import ProductInfo from "../../pages/ProductInfo/ProductInfo";
+//import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ProductInfo from "../../pages/ProductInfo/ProductInfo";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -59,16 +60,14 @@ const ProductDisplayClass = (props) => {
           >
             {title}
           </h6>
-          <Link
-            to={`/products/${productid}`}
-            id={productid}
-            price={price}
-            image={image}
-            title={title}
-            issale={isSale}
-            newprice={newPrice ? newPrice : ""}
-          >
-            click{" "}
+          <Link to={`/products/${productid}`}>
+            click
+            <Router>
+              <Route
+                path="/products/:product.id"
+                component={ProductInfo}
+              ></Route>
+            </Router>
           </Link>
         </div>
         <div className="product-image">
