@@ -53,6 +53,7 @@ const ProductDisplayClass = (props) => {
       <div className="product-card">
         <div className="product-info">
           {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}
+          <Link to={`/products/:${productid}`}> click </Link>
           <h6
             style={{
               color: newPrice && isSale ? color : "black",

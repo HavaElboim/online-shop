@@ -1,10 +1,21 @@
 import { React, useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 
 const ProductInfo = ({ match }) => {
-  //const ProductInfo = (props) => {
-  const [productData, setData] = useState({});
+  //const [productData, setData] = useState({});
 
-  useEffect(() => {
+  console.log("match: ", { match });
+  let { id } = useParams();
+
+  console.log("id is ", id);
+
+  /*useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${match.params.productid}`)
       .then((result) => result.json())
       .then(
@@ -18,8 +29,10 @@ const ProductInfo = ({ match }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <div>prod details: {productData.title}</div>;
+  */
+  //return <div>prod details: {productData.title}</div>;
 
+  return <div>prod details: ${match}</div>;
   //console.log("in prodinfo page");
   //console.log("match is ", props);
   //return <div> asdfa}</div>;
