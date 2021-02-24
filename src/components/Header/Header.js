@@ -23,7 +23,7 @@ const Header = (props) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <div style={{ color: theme.foreground, background: theme.background }}>
+    <div>
       <ChangeThemeColors />
       <SaleCountdown
         secondsLeft={secondsLeft}
@@ -39,7 +39,6 @@ const Header = (props) => {
         ></CategorySelect>
       )}
       <div className="price-range">
-        <span>Select Price range:</span>
         <SliderFilterPrice
           priceRange={priceRange}
           setPriceRange={setPriceRange}

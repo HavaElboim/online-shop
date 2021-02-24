@@ -178,7 +178,6 @@ h2 {
   flex: 1 25%; /* changed from 16% to make 3 columns instead of 5 */
   justify-content: space-between; /*to push the title to the top and the price to the bottom, irrespective of the picture size*/
 
-  background-color: #fff;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
 }
 

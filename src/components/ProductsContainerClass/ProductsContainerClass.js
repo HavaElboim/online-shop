@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Products from "../Products/Products";
+import ThemeContext from "../../contexts/ThemeContexts";
 
 const ProductsContainerClass = (props) => {
   const {
@@ -13,11 +14,17 @@ const ProductsContainerClass = (props) => {
     priceRange,
   } = props;
 
+  const theme = useContext(ThemeContext);
+
   return (
-    <div>
+    <div className="outer-div">
       <div>
         <div>
-          <h2>Products</h2>
+          <div
+            style={{ color: theme.foreground, background: theme.background }}
+          >
+            Products:
+          </div>
         </div>
         <div>
           <div>

@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 // need to install and design: npm install antd
 import { Slider } from "antd";
 import "antd/dist/antd.css";
+import ThemeContext from "../../contexts/ThemeContexts";
 
 const SliderFilterPrice = (props) => {
   const { priceRange, setPriceRange, products } = props;
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     if (products.length) {
@@ -23,6 +25,9 @@ const SliderFilterPrice = (props) => {
 
   return (
     <>
+      <div style={{ color: theme.foreground, background: theme.background }}>
+        Select Price range:
+      </div>
       <Slider
         range
         defaultValue={[0, 1000]}

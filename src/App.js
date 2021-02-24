@@ -1,3 +1,6 @@
+import "./App.css";
+import { useState } from "react";
+
 //for SPAP:
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -24,11 +27,23 @@ import ThemeContext, { themes } from "./contexts/ThemeContexts";
 Header calls SaleCountdown component which counts the time until end of sale and sets the Sale Message in the Header
 Header also calls CategorySelect component to choose products filter. 
   */
+
+//see here for example of changing theme:
+// https://stackoverflow.com/questions/54738681/how-to-change-context-value-while-using-react-hook-of-usecontext
+
 const App = () => {
+  const [theme, setTheme] = useState(themes.light);
+  function toggleTheme() {
+    setTheme((theme) => (theme === themes.light ? themes.dark : themes.light));
+  }
+
   return (
-    <ThemeContext.Provider value={themes}>
+    <ThemeContext.Provider value={[theme, toggleTheme]}>
       <Router>
-        <div>
+        <div
+          className="outer-div"
+          style={{ color: theme.foreground, background: theme.background }}
+        >
           <nav>
             <ul>
               <li>

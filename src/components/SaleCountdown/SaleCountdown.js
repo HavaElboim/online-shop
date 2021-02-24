@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import "./SaleCountdown.css";
 import PropTypes from "prop-types";
+import ThemeContext from "../../contexts/ThemeContexts";
 
 /* this component is called by the Header component *
 
@@ -9,6 +10,7 @@ and sets state of display message depending on whether the sale has finished */
 
 const SaleCountdown = (props) => {
   const { secondsLeft, setSecondsLeft, isSale, setSale } = props;
+  const [theme] = useContext(ThemeContext);
 
   const convertToDHMS = () => {
     let temp = "";
@@ -90,7 +92,7 @@ const SaleCountdown = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ color: theme.foreground, background: theme.background }}>
       <h2 id="message">{saleMessage()} </h2>
     </div>
   );

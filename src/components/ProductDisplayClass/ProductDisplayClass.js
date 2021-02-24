@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
@@ -29,10 +29,6 @@ const ProductDisplayClass = (props) => {
 
   const theme = useContext(ThemeContext);
 
-  useEffect(() => {
-    console.log("in ProductDisplayClass, theme is: ", theme);
-  }, []);
-
   const newPrice = salesProductsIds.includes(productid)
     ? ` Sale: $ ${+(price * 0.9).toFixed(2)}`
     : "";
@@ -59,7 +55,7 @@ const ProductDisplayClass = (props) => {
     price > priceRange[0] && (
       <div
         className="product-card"
-        style={{ color: theme.foreground, background: theme.background }}
+        style={{ color: theme.foreground, background: "white" }}
       >
         <div className="product-info">
           {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}
