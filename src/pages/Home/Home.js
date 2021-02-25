@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 //components of content:
 import Header from "../../components/Header/Header";
-import ProductsContainerClass from "../../components/ProductsContainerClass/ProductsContainerClass";
+import Products from "../../components/Products/Products";
 
 const Home = () => {
   const [color] = useState("red");
@@ -35,7 +35,7 @@ const Home = () => {
         priceRange={priceRange}
         setPriceRange={setPriceRange}
       ></Header>
-      <ProductsContainerClass
+      <Products
         color={color}
         secondsLeft={secondsLeft}
         salesProductsIds={salesProductsIds}
@@ -43,7 +43,7 @@ const Home = () => {
         products={products}
         isSale={isSale}
         priceRange={priceRange}
-      ></ProductsContainerClass>
+      ></Products>
     </div>
   );
 };

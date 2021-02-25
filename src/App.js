@@ -1,3 +1,5 @@
+import { React } from "react";
+
 //for SPAP:
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -44,9 +46,6 @@ const App = () => {
           </Route>
           <Route path="/About">
             <About />
-          </Route>
-          <Route path="/products">
-            <ProductInfo />
           </Route>
           <Route path="/products/:productid" component={ProductInfo} />
           <Route path="/">

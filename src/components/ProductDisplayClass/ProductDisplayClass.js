@@ -2,9 +2,6 @@ import React from "react";
 import "./ProductDisplayClass.css";
 import PropTypes from "prop-types";
 import sale from "./sale.png";
-//import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ProductInfo from "../../pages/ProductInfo/ProductInfo";
 
 /* this component is called from the Products class.
    It renders individual products cards (product title, image, price).
@@ -33,19 +30,6 @@ const ProductDisplayClass = (props) => {
   /* renders an individual product card, containing product information and image.
   the information an image are obtained from the props which are passed from the ProductsContainerClass */
 
-  /*
-         <Link
-          to={`/ProductInfo/${productid}`}
-          component={ProductInfo}
-          id={productid}
-          price={price}
-          image={image}
-          title={title}
-          isSale={secondsLeft}
-          newPrice={newPrice ? newPrice : ""}
-        />
-        */
-
   return (
     (!selectedCategory || category === selectedCategory) &&
     price < priceRange[1] &&
@@ -53,7 +37,6 @@ const ProductDisplayClass = (props) => {
       <div className="product-card">
         <div className="product-info">
           {newPrice && isSale ? <img src={sale} alt="sale item"></img> : null}
-          <Link to={`/products/:${productid}`}> click </Link>
           <h6
             style={{
               color: newPrice && isSale ? color : "black",
