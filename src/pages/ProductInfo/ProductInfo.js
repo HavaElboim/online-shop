@@ -32,37 +32,3 @@ const ProductInfo = ({ match }) => {
   }
 };
 export default ProductInfo;
-
-/*return (
-  <div>
-    <h2>Product info</h2>
-    <div>Your Product description:</div>
-    <h1>{productData[0].title}</h1>
-    <div className="product-info">
-      {newprice && issale ? <img src={sale} alt="sale item"></img> : null}
-      <h6
-        style={{
-          color: newprice && issale ? color : "black",
-        }}
-      >
-        {title}
-      </h6>
-    </div>
-    <div className="product-image">
-      <img src={productData[0].img} alt={""} />
-    </div>
-    <div className="product-info">
-      <h5>$ {productData[0].price}</h5>
-      <h5
-        style={{
-          color: color,
-          display: newprice && issale ? "block" : "none",
-        }}
-      >
-        {newprice}
-      </h5>
-      <h5>{productData[0].description}</h5>
-    </div>
-  </div>
-);
-*/
