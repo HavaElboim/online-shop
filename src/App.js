@@ -64,9 +64,6 @@ const App = () => {
             <Route path="/About">
               <About />
             </Route>
-            <Route path="/products">
-              <ProductInfo />
-            </Route>
             <Route path="/products/:productid" component={ProductInfo}></Route>
             <Route path="/">
               <Home />
