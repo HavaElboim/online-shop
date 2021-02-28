@@ -19,7 +19,7 @@ const ProductInfo = ({ match }) => {
   if (productData) {
     return (
       <div>
-        <h1>{productData.title}</h1>
+        <div className="product-title">{productData.title}</div>
         <div className="product-image">
           <img src={productData.image} alt={""} />
         </div>

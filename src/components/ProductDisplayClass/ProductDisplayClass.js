@@ -36,19 +36,6 @@ const ProductDisplayClass = (props) => {
   /* renders an individual product card, containing product information and image.
   the information an image are obtained from the props which are passed from the ProductsContainerClass */
 
-  /*
-         <Link
-          to={`/ProductInfo/${productid}`}
-          component={ProductInfo}
-          id={productid}
-          price={price}
-          image={image}
-          title={title}
-          isSale={secondsLeft}
-          newPrice={newPrice ? newPrice : ""}
-        />
-        */
-
   return (
     (!selectedCategory || category === selectedCategory) &&
     price < priceRange[1] &&
