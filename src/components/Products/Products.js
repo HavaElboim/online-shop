@@ -34,7 +34,11 @@ const Products = (props) => {
       {products.length > 0 && (
         <div className="product-filter">
           {products.map((product) => (
-            <Link to={`/products/${product.id}`} key={product.id}>
+            <Link
+              className="product-card"
+              to={`/products/${product.id}`}
+              key={product.id}
+            >
               <ProductDisplayClass
                 color={color}
                 secondsLeft={secondsLeft}
