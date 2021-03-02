@@ -14,8 +14,19 @@ const Home = () => {
   const [priceRange, setPriceRange] = useState([0, 200]);
 
   // fetching from my server on localhost at 192.168.43.81 on port 8000:
+  /*useEffect(() => {
+    fetch("http://192.168.43.81:8000/products.json")
+      .then((result) => result.json())
+      .then((data) => {
+        setProducts(data);
+      });
+    console.log("fetched ");
+  }, []);
+  */
+
+  // in BinyaminTech:
   useEffect(() => {
-    fetch("https://192.168.43.81:8000/products.json")
+    fetch("http://10.0.0.193:8000/products")
       .then((result) => result.json())
       .then((data) => {
         setProducts(data);
