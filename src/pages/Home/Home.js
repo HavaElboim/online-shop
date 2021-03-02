@@ -13,8 +13,9 @@ const Home = () => {
   const [isSale, setSale] = useState("true");
   const [priceRange, setPriceRange] = useState([0, 200]);
 
+  // fetching from my server on localhost at 192.168.43.81 on port 8000:
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://192.168.43.81:8000/products.json")
       .then((result) => result.json())
       .then((data) => {
         setProducts(data);
