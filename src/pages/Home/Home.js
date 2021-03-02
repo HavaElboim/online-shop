@@ -43,12 +43,13 @@ const Home = () => {
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
         products={products}
+        setProducts={setProducts}
         isSale={isSale}
         setSale={setSale}
         priceRange={priceRange}
         setPriceRange={setPriceRange}
-        searchKeyword = {searchKeyword}
-        setSearch = {setSearch}
+        searchKeyword={searchKeyword}
+        setSearch={setSearch}
       ></Header>
       <Products
         color={color}

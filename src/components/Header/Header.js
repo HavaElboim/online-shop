@@ -17,6 +17,7 @@ const Header = (props) => {
     isSale,
     setSale,
     products,
+    setProducts,
     priceRange,
     setPriceRange,
     searchKeyword,
@@ -46,6 +47,7 @@ const Header = (props) => {
           searchKeyword={searchKeyword}
           setSearch={setSearch}
           products={products}
+          setProducts={setProducts}
         ></SearchKeyword>
       )}
       <div className="price-range">

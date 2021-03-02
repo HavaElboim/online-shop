@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import ListCategories from "../ListCategories/ListCategories";
 import ThemeContext from "../../contexts/ThemeContexts";
 
 const SearchKeyword = (props) => {
-  const { searchKeyword, setSearch, products } = props;
+  const { searchKeyword, setSearch, products, setProducts } = props;
 
   const [theme] = useContext(ThemeContext);
 
@@ -14,6 +13,18 @@ const SearchKeyword = (props) => {
       products.length
     );
   }, [products]);
+
+  const sendSearch = () => {
+    console.log("starting search for words", searchKeyword);
+    fetch(`http://10.0.0.193:8000/products?q=${searchKeyword}`)
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+    console.log(
+      "descr is ",
+      products,
+      ` from http://10.0.0.193:8000/products?q=${searchKeyword}`
+    );
+  };
 
   return (
     <div style={{ color: theme.color, background: theme.background }}>
@@ -29,7 +40,9 @@ const SearchKeyword = (props) => {
       <button
         id="searchButton"
         style={{ color: theme.background, background: theme.foreground }}
-        onClick
+        onClick={(e) => {
+          sendSearch();
+        }}
       >
         Search
       </button>
@@ -40,7 +53,7 @@ const SearchKeyword = (props) => {
       >
         Clear search
       </button>
-      <div>Searching for ${searchKeyword}</div>
+      <div>Searching for {searchKeyword}</div>
     </div>
   );
 };
