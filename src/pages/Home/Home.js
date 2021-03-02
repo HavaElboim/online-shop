@@ -12,6 +12,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [isSale, setSale] = useState("true");
   const [priceRange, setPriceRange] = useState([0, 200]);
+  const [searchKeyword, setSearch] = useState("");
 
   // fetching from my server on localhost at 192.168.43.81 on port 8000:
   /*useEffect(() => {
@@ -46,6 +47,8 @@ const Home = () => {
         setSale={setSale}
         priceRange={priceRange}
         setPriceRange={setPriceRange}
+        searchKeyword = {searchKeyword}
+        setSearch = {setSearch}
       ></Header>
       <Products
         color={color}

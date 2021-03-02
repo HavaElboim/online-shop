@@ -6,6 +6,7 @@ import SliderFilterPrice from "../SliderFilterPrice/SliderFilterPrice";
 import "./Header.css";
 import ChangeThemeColors from "../ChangeThemeColors/ChangeThemeColors";
 import ThemeContext from "../../contexts/ThemeContexts";
+import SearchKeyword from "../SearchKeyword/SearchKeyword";
 
 const Header = (props) => {
   const {
@@ -18,6 +19,8 @@ const Header = (props) => {
     products,
     priceRange,
     setPriceRange,
+    searchKeyword,
+    setSearch,
   } = props;
 
   const theme = useContext(ThemeContext);
@@ -37,6 +40,13 @@ const Header = (props) => {
           setSelectedCategory={setSelectedCategory}
           products={products}
         ></CategorySelect>
+      )}
+      {products.length > 0 && (
+        <SearchKeyword
+          searchKeyword={searchKeyword}
+          setSearch={setSearch}
+          products={products}
+        ></SearchKeyword>
       )}
       <div className="price-range">
         <SliderFilterPrice
